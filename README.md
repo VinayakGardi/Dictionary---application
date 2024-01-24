@@ -28,6 +28,16 @@ The Dictionary Application uses retrofit api to fetch data from the web and disp
 - Run android studio 
 - run the project in emulator or any physical device
 
+## Screenshots
+
+<!-- Screenshots -->
+<div style="display: flex; justify-content: space-between;">
+  <img src="media/ss0.jpg" alt="Screenshot 1" width="300" />
+  <img src="media/ss1.jpg" alt="Screenshot 2" width="300" />
+  <img src="media/ss2.jpg" alt="Screenshot 2" width="300" />
+  <img src="media/ss3.jpg" alt="Screenshot 2" width="300" />
+</div>
+
 ## Technology used 
 - Kotlin - Programming language for Android app development.
 - Retrofit API - RRetrofit is a popular Android library that simplifies HTTP requests by providing a type-safe way to define and consume RESTful APIs. It uses annotations to map API endpoints and structures responses with converter factories for easy integration with Gson or other serialization libraries.
