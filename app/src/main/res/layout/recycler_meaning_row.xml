@@ -6,7 +6,7 @@
     android:backgroundTint="@color/white"
     android:layout_marginVertical="8dp"
     android:layout_marginHorizontal="5dp"
-    android:background="@drawable/search_background"
+    android:background="@drawable/card_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 

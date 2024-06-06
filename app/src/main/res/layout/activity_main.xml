@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@drawable/background_screen"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.5"
     app:layout_constraintStart_toStartOf="parent"
@@ -94,6 +95,8 @@
             android:id="@+id/recycler_view_meaning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@drawable/card_background"
             android:layout_margin="10dp"
             android:padding="5dp"
             tools:listitem="@layout/recycler_meaning_row" />

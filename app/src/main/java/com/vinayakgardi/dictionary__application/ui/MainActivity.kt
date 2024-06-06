@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun setAdapter() {
+        binding.recyclerViewMeaning.visibility = View.VISIBLE
         binding.recyclerViewMeaning.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMeaning.adapter = adapter
     }
