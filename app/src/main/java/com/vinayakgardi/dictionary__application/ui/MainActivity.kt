@@ -20,18 +20,23 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var adapter: MeaningAdapter
     private lateinit var mediaPlayer : MediaPlayer
+    private var isPlaying = false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         adapter = MeaningAdapter(emptyList())
+
         binding.btnSearch.setOnClickListener {
             val word = binding.searchInput.text.toString().trim()
-            getMeaning(word)
+             getMeaning(word)
         }
 
         setAdapter()
+
 
     }
 
@@ -40,6 +45,32 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerViewMeaning.layoutManager = LinearLayoutManager(this)
         binding.recyclerViewMeaning.adapter = adapter
     }
+
+    private fun prepareMediaPlayer(url: String) {
+        mediaPlayer = MediaPlayer().apply {
+            setDataSource(url)
+            prepareAsync()
+            setOnPreparedListener {
+                binding.playPhonetics.isEnabled = true
+            }
+            setOnCompletionListener {
+                this@MainActivity.isPlaying = false
+                binding.playPhonetics.setImageResource(R.drawable.ic_play_button)
+            }
+        }
+    }
+
+    private fun togglePlayPause() {
+        if (isPlaying) {
+            mediaPlayer.pause()
+            binding.playPhonetics.setImageResource(R.drawable.ic_play_button)
+        } else {
+            mediaPlayer.start()
+            binding.playPhonetics.setImageResource(R.drawable.ic_pause_button)
+        }
+        isPlaying = !isPlaying
+    }
+
 
     private fun getMeaning(word: String){
         setOnProgress(true)
@@ -73,12 +104,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.textWordTitle.text = response.word
         binding.textWordPhonetics.text = response.phonetics[0].text!!
-
-        if(binding.textWordTitle.text.isEmpty()){
-            binding.playPhonetics.setImageResource(R.drawable.ic_play_button)
-        }else{
-            binding.playPhonetics.setImageResource(R.drawable.ic_pause_button)
+        binding.playPhonetics.setOnClickListener {
+            togglePlayPause()
         }
+
+        prepareMediaPlayer(response.phonetics[0].audio)
+
+
         adapter.updateNewData(response.meanings)
 
     }
