@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vinayakgardi.dictionary__application.databinding.RecyclerMeaningRowBinding
 import com.vinayakgardi.dictionary__application.model.Meaning
+import com.vinayakgardi.dictionary__application.model.WordDataItem
 
 class MeaningAdapter(var meaningList: List<Meaning>) :
     RecyclerView.Adapter<MeaningAdapter.MeaningViewHolder>() {

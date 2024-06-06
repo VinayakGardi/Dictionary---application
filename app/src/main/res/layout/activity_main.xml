@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -83,7 +81,16 @@
             android:textStyle="bold" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
+    <ImageButton
+        android:id="@+id/play_phonetics"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:scaleType="fitCenter"
+        android:background="@null"
+        android:src="@drawable/ic_play_button"
+        android:layout_marginLeft="20dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_meaning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

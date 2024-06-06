@@ -1,22 +1,25 @@
 package com.vinayakgardi.dictionary__application.ui
 
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.vinayakgardi.dictionary__application.R
 import com.vinayakgardi.dictionary__application.adapter.MeaningAdapter
 import com.vinayakgardi.dictionary__application.api.RetrofitObject
 import com.vinayakgardi.dictionary__application.databinding.ActivityMainBinding
-import com.vinayakgardi.dictionary__application.model.Word
+import com.vinayakgardi.dictionary__application.model.WordDataItem
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var adapter: MeaningAdapter
+    private lateinit var mediaPlayer : MediaPlayer
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -43,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             try{
                 val response =  RetrofitObject.dictionaryApi.getMeaning(word)
-                Log.i("Word Response" , "${response.body().toString()}")
+                Log.i("Word Response" , response.body().toString())
                 if(response.body() == null){
                     throw (Exception())
                 }
@@ -66,9 +69,16 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    private fun setUi(response : Word){
+    private fun setUi(response : WordDataItem){
+
         binding.textWordTitle.text = response.word
-        binding.textWordPhonetics.text = response.phonetics[0].text.toString()
+        binding.textWordPhonetics.text = response.phonetics[0].text!!
+
+        if(binding.textWordTitle.text.isEmpty()){
+            binding.playPhonetics.setImageResource(R.drawable.ic_play_button)
+        }else{
+            binding.playPhonetics.setImageResource(R.drawable.ic_pause_button)
+        }
         adapter.updateNewData(response.meanings)
 
     }

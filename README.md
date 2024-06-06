@@ -32,6 +32,7 @@ The Dictionary Application uses retrofit api to fetch data from the web and disp
 
 <!-- Screenshots -->
 <div style="display: flex; justify-content: space-between;">
+
   <img src="https://github.com/VinayakGardi/Dictionary---application/blob/9bb5eaf0866326d3808b5fc1327f000bd628fad5/Media/ss0.jpg" alt="Screenshot 1" width="300" />
   <img src="https://github.com/VinayakGardi/Dictionary---application/blob/9bb5eaf0866326d3808b5fc1327f000bd628fad5/Media/ss1.jpg" alt="Screenshot 2" width="300" />
   <img src="https://github.com/VinayakGardi/Dictionary---application/blob/9bb5eaf0866326d3808b5fc1327f000bd628fad5/Media/ss2.jpg" alt="Screenshot 2" width="300" />
